@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types"
 import './ContactForm.scss';
 
 class ContractForm extends Component {
@@ -6,20 +7,29 @@ class ContractForm extends Component {
     name: '',
     number: '',
   };
+
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
+
   handleAllInputChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
-  handleS = e => {
-    e.preventDefault();
-  };
+
   // функция записи новых абонентов в телефонную книгу
   handlePushContact = e => {
     e.preventDefault();
     if (this.state.name.trim() === '') return;
 
     this.props.onSubmit(this.state);
+    this.reset()
   };
+
+  reset = () => {
+    this.setState({name: '', number: ''})
+  }
+
   render() {
     const { name, number } = this.state;
     return (

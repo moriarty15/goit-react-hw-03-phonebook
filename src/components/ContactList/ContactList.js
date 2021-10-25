@@ -1,20 +1,20 @@
-import React from 'react';
-import './ContactList.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import "./ContactList.scss";
+import ContactListItem from "./ContactListItem";
 
-const ContactList = ({ f, onDeleteContacts }) => {
+const ContactList = ({ filter, onDeleteContacts }) => {
   return (
     <ul className="Contact__list">
-      {f.map(({ id, name, number }) => {
+      {filter.map(({ id, name, number }) => {
         return (
           <li key={id} className="Contact__item">
-            {name}: {number}{' '}
-            <button
-              className="button__delete"
-              type="button"
-              onClick={() => onDeleteContacts(id)}
-            >
-              delete
-            </button>
+            <ContactListItem
+              name={name}
+              number={number}
+              id={id}
+              onDeleteContacts={onDeleteContacts}
+            />
           </li>
         );
       })}
@@ -22,3 +22,8 @@ const ContactList = ({ f, onDeleteContacts }) => {
   );
 };
 export default ContactList;
+
+ContactList.propTypes = {
+  filter: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired,
+}
