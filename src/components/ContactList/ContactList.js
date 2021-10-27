@@ -25,5 +25,5 @@ export default ContactList;
 
 ContactList.propTypes = {
   filter: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 }

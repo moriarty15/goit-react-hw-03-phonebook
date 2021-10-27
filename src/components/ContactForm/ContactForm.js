@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types"
-import './ContactForm.scss';
+import "./ContactForm.scss";
+
 
 class ContractForm extends Component {
   state = {
